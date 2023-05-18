@@ -7,8 +7,8 @@ jobs:
     runs-on: macos-latest
     environment: Cypress
     env:
-      cypress_email: ${{secrets.CYPRESS_EMAIL}}
-      cypress_password: ${{secrets.CYPRESS_PASSWORD}}
+      cypress_email: ${{ secrets.CYPRESS_EMAIL }}
+      cypress_password: ${{ secrets.CYPRESS_PASSWORD }}
     steps:
       - name: Install Packages
         run: |
@@ -26,7 +26,7 @@ jobs:
         with:
           build: npx cypress run --browser chrome || true
         continue-on-error: true
-      - name: Copy test execution videos
+      - name: Copy Test Screenshots
         run: |
           mkdir public
           mkdir -p cypress/screenshots
@@ -35,13 +35,13 @@ jobs:
       #   run: npm run merge-reports
       # - name: Generate HTML report
       #   run: npm run generate-htmlreport
-      - name: Deploy report page
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
+      # - name: Deploy report page
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./public
+      #     user_name: "github-actions[bot]"
+      #     user_email: "github-actions[bot]@users.noreply.github.com"
 
       - name: Save build folder
         uses: actions/upload-artifact@v2

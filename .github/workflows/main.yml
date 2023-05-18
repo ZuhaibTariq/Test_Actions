@@ -1,0 +1,41 @@
+name: Penguin e2e Tests
+
+on: [workflow_dispatch]
+
+jobs:
+  e2e-Test-Cycle:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: e2e Tests
+        uses: cypress-io/github-action@v2
+        with:
+          build: npx cypress run --browser chrome || true
+        continue-on-error: true
+      - name: Copy test execution videos
+        run: |
+          mkdir public
+          mkdir -p cypress/screenshots
+          cp -r cypress/videos public/videos
+          cp -r cypress/screenshots public/screenshots
+      - name: Merge test results into one
+        run: npm run merge-reports
+      - name: Generate HTML report
+        run: npm run generate-htmlreport
+      - name: Deploy report page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          if-no-files-found: error
+          path: public

@@ -1,0 +1,31 @@
+*.pyc
+
+.xml
+
+auny-erp-e2e-tests-66e3568df53f/.idea/
+
+*.log
+
+node_modules
+# pycharm
+.idea
+
+# VSCode
+.vscode
+.vscode/
+node_modules/
+cypress.env.json
+cypress/videos
+cypress/results
+cypress/screenshots
+cypress/.DS_Store
+.Ds_store
+.DS_Store
+.DS_Store/
+package-lock.json
+.prettierignore
+
+# CustomScripts
+script.js
+variables.txt
+getters.txt

@@ -9,7 +9,7 @@ describe("Verify navigation UI contents and their interactions on Dashboard", ()
   });
 
   it("Verify navigation UI contents and their interactions on Dashboard", () => {
-    Login.enterEmailAndPassword(cypress.env("EMAIL"), cypress.env("PASSWORD"));
+    Login.enterEmailAndPassword(Cypress.env("EMAIL"), Cypress.env("PASSWORD"));
     cy.log("User entered email and password to login");
 
     Login.submitLoginButton();

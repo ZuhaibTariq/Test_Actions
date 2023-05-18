@@ -9,7 +9,7 @@ describe("Verify options under Facility Tab in Navigation Bar", () => {
   });
 
   it("Verify options under Facility Tab in Navigation Bar", () => {
-    Login.enterEmailAndPassword(cypress.env("EMAIL"), cypress.env("PASSWORD"));
+    Login.enterEmailAndPassword(Cypress.env("EMAIL"), Cypress.env("PASSWORD"));
     cy.log("User entered email and password to login");
 
     Login.submitLoginButton();

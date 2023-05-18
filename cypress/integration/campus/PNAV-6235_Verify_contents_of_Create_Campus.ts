@@ -13,7 +13,7 @@ describe("Verify contents of Create Campus", () => {
   });
 
   it("Verify contents of Create Campus", () => {
-    Login.enterEmailAndPassword(Cypress.env("email"), Cypress.env("password"));
+    Login.enterEmailAndPassword(cypress.env("EMAIL"), cypress.env("PASSWORD"));
     cy.log("User entered email and password to login");
 
     Login.submitLoginButton();

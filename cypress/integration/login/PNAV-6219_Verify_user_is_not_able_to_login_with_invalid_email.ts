@@ -10,7 +10,7 @@ describe("Verify user is not able to login with invalid email", () => {
   it("Verify user is not able to login with invalid email", () => {
     Login.enterEmailAndPassword(
       constants.incorrectEmail,
-      Cypress.env("password")
+      cypress.env("PASSWORD")
     );
     cy.log("User entered email and password to login");
 

@@ -11,7 +11,7 @@ describe("Verify no cities available in list until country is selected", () => {
   });
 
   it("Verify no cities available in list until country is selected", () => {
-    Login.enterEmailAndPassword(Cypress.env("EMAIL"), Cypress.env("PASSWORD"));
+    Login.enterEmailAndPassword(Cypress.env("email"), Cypress.env("password"));
     cy.log("User entered email and password to login");
 
     Login.submitLoginButton();

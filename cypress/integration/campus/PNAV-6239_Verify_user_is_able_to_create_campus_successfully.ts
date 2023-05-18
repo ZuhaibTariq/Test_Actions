@@ -11,7 +11,7 @@ describe("Verify user is able to create campus successfully", () => {
     });
 
     it("Verify user is able to create campus successfully", () => {
-        Login.enterEmailAndPassword(Cypress.env("EMAIL"), Cypress.env("PASSWORD"));
+        Login.enterEmailAndPassword(Cypress.env("email"), Cypress.env("password"));
         cy.log("User entered email and password to login");
 
         Login.submitLoginButton();

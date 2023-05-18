@@ -5,14 +5,22 @@ on: [workflow_dispatch]
 jobs:
   e2e-Test-Cycle:
     runs-on: macos-latest
+    environment: Cypress
+    env:
+      cypress_email: ${{secrets.CYPRESS_EMAIL}}
+      cypress_password: ${{secrets.CYPRESS_PASSWORD}}
     steps:
+      - name: Install Packages
+        run: |
+          echo $cypress_email
+          echo $cypress_password
       - name: Checkout
         uses: actions/checkout@v2
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Install Packages
-        run: |
-          npm install
+        run: npm install
+        
       - name: e2e Tests
         uses: cypress-io/github-action@v2
         with:

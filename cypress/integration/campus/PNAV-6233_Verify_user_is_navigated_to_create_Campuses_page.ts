@@ -10,7 +10,7 @@ describe("Verify user is navigated to create Campuses page", () => {
   });
 
   it("Verify user is navigated to create Campuses page", () => {
-    Login.enterEmailAndPassword(Cypress.env("EMAIL"), Cypress.env("PASSWORD"));
+    Login.enterEmailAndPassword(Cypress.env("email"), Cypress.env("password"));
     cy.log("User entered email and password to login");
 
     Login.submitLoginButton();

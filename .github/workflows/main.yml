@@ -10,21 +10,13 @@ jobs:
       cypress_email: ${{ secrets.CYPRESS_EMAIL }}
       cypress_password: ${{ secrets.CYPRESS_PASSWORD }}
     steps:
-      - name: Install Packages
-        run: |
-          echo $cypress_email
-          echo $cypress_password
       - name: Checkout
         uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Install Packages
-        run: npm install
-        
+
       - name: e2e Tests
         uses: cypress-io/github-action@v2
         with:
-          build: npx cypress run --spec cypress/integration/login/PNAV-6215_Verify_that_user_is_on_Sign_In_page.ts  --browser chrome --config-file=cypress.config.ts || true
+          build: npx cypress run --spec cypress/integration/login/PNAV-6215_Verify_that_user_is_on_Sign_In_page.ts  --browser chrome --config-file=cypress.config.ts
         continue-on-error: true
       - name: Copy Test Screenshots
         run: |
@@ -48,4 +40,4 @@ jobs:
         with:
           name: build
           if-no-files-found: error
-          path: public
+          path: cypress/results

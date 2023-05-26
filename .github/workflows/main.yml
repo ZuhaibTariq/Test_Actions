@@ -24,7 +24,7 @@ jobs:
       - name: e2e Tests
         uses: cypress-io/github-action@v2
         with:
-          build: npx cypress run --spec cypress/integration/login/PNAV-6215_Verify_that_user_is_on_Sign_In_page.ts  --browser chrome --config-file="cypress.config.ts" || true
+          build: npx cypress run --spec cypress/integration/login/PNAV-6215_Verify_that_user_is_on_Sign_In_page.ts  --browser chrome --config-file=cypress.config.ts || true
         continue-on-error: true
       - name: Copy Test Screenshots
         run: |

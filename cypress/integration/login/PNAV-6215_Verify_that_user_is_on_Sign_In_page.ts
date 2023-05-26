@@ -10,7 +10,7 @@ describe("Verify that user is on sign in page", () => {
   it("user should be on sign in page", () => {
     Login.getPageHeading().should("contain", constants.loginPageHeading);
     cy.log("Page heading verified");
-
+    cy.get("fail")
     Login.getEmail().should("exist");
     Login.getPassword().should("exist");
     Login.getLoginButton().should("exist");

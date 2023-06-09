@@ -17,7 +17,6 @@ export default defineConfig({
     specPattern: "cypress/integration/",
     projectId: "nv94b9",
     reporter: "mochawesome",
-    video: false,
     reporterOptions: {
       reportDir: "cypress/results",
       overwrite: false,

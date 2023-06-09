@@ -12,25 +12,30 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        
-      - name: Install Packages
-        run: npm install
 
       - name: e2e Tests
         uses: cypress-io/github-action@v5
         with:
           browser: chrome
         continue-on-error: true
-
-      - name: Copy Test Screenshots
-        run: |
-          mkdir public
-          mkdir -p cypress/screenshots
-          cp -r cypress/screenshots public/screenshots
-
+    
       - name: Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: build
           if-no-files-found: ignore
-          path: public
+          path: cypress/screenshots
+      
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          if-no-files-found: ignore
+    
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+          if-no-files-found: ignore

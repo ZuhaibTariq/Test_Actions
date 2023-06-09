@@ -24,8 +24,8 @@ jobs:
         continue-on-error: true
       
       - uses: actions/upload-artifact@v3
+        if: failure()
         with:
-          if: failure()
           name: Results
           path: |
                 cypress/screenshots

@@ -11,32 +11,26 @@ jobs:
       cypress_password: ${{ secrets.CYPRESS_PASSWORD }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        
+      - name: Install Packages
+        run: npm install
 
       - name: e2e Tests
-        uses: cypress-io/github-action@v2
-      - run: npx cypress run --spec cypress/integration/login/PNAV-6215_Verify_that_user_is_on_Sign_In_page.ts  --browser chrome --config-file=cypress.config.ts
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
         continue-on-error: true
+
       - name: Copy Test Screenshots
         run: |
           mkdir public
           mkdir -p cypress/screenshots
           cp -r cypress/screenshots public/screenshots
-      # - name: Merge test results into one
-      #   run: npm run merge-reports
-      # - name: Generate HTML report
-      #   run: npm run generate-htmlreport
-      # - name: Deploy report page
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./public
-      #     user_name: "github-actions[bot]"
-      #     user_email: "github-actions[bot]@users.noreply.github.com"
 
-      - name: Save build folder
-        uses: actions/upload-artifact@v2
+      - name: Artifacts
+        uses: actions/upload-artifact@v3
         with:
           name: build
-          if-no-files-found: error
-          path: cypress/results
+          if-no-files-found: ignore
+          path: public

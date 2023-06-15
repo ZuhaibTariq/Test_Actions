@@ -36,7 +36,7 @@ jobs:
       - name: Generate Email HTML
         run: |
             node globals/json_html_converter.js
-            cat table.html
+            cat cypress/results/mochawesome.json
       
       - name: Send mail
         uses: dawidd6/action-send-mail@v3

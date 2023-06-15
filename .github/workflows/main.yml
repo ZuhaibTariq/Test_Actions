@@ -32,11 +32,11 @@ jobs:
                 cypress/screenshots
                 cypress/videos
           if-no-files-found: ignore
+          run: node node globals/json_html_converter.js
       
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
-          run: node node globals/json_html_converter.js
           # Specify connection via URL (replaces server_address, server_port, secure,
           # username and password)
           #

@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 // Read the JSON file
-const jsonData = fs.readFileSync('cypress/results/mochawesome.json');
+const jsonData = fs.readFileSync('merged_report.json');
 const data = JSON.parse(jsonData.toString()).stats;
 
 // Create the HTML table

@@ -32,7 +32,9 @@ jobs:
                 cypress/screenshots
                 cypress/videos
           if-no-files-found: ignore
-          run: node node globals/json_html_converter.js
+      
+      - name: Generate Email HTML
+        run: node node globals/json_html_converter.js
       
       - name: Send mail
         uses: dawidd6/action-send-mail@v3

@@ -6,37 +6,36 @@ const data = JSON.parse(jsonData.toString());
 
 // Create the HTML table
 let table = `
-  <table style="border-collapse: collapse; width: 100%;">
-    <thead>
-      <tr style="background-color: #eee;">
-        <th style="padding: 10px; border: 1px solid #ccc;">Stats</th>
-        <th style="padding: 10px; border: 1px solid #ccc;">Values</th>
-      </tr>
-    </thead>
-    <tbody>
-`;
-for (const [key, value] of Object.entries(data.stats)) {
-  table += `
-    <tr style="background-color: ${isEvenRow() ? '#f2f2f2' : '#fff'};">
-      <td style="padding: 10px; border: 1px solid #ccc;">${formatKey(key)}</td>
-      <td style="padding: 10px; border: 1px solid #ccc;">${value}</td>
+<html>
+<h2>Cypress Results</h2>
+<table role="table" style="border-collapse: collapse; width: 100%;">
+  <tbody>
+    <tr>
+      <th style="padding: 10px; border: 1px solid #ccc;">Passed 
+        <g-emoji class="g-emoji" alias="white_check_mark" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png">✅</g-emoji>
+      </th>
+      <th style="padding: 10px; border: 1px solid #ccc;">Failed 
+        <g-emoji class="g-emoji" alias="x" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png">❌</g-emoji>
+      </th>
+      <th style="padding: 10px; border: 1px solid #ccc;">Pending 
+        <g-emoji class="g-emoji" alias="hand" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/270b.png">✋</g-emoji>
+      </th>
+      <th style="padding: 10px; border: 1px solid #ccc;">Skipped 
+        <g-emoji class="g-emoji" alias="leftwards_arrow_with_hook" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/21a9.png">↩️</g-emoji>
+      </th>
+      <th style="padding: 10px; border: 1px solid #ccc;">Duration <g-emoji class="g-emoji" alias="clock8" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f557.png">🕗</g-emoji>
+      </th>
     </tr>
-  `;
-}
-table += '</tbody></table>';
+    <tr>
+      <td style="padding: 10px; border: 1px solid #ccc;">${data.passes}</td>
+      <td style="padding: 10px; border: 1px solid #ccc;">${data.failures}</td>
+      <td style="padding: 10px; border: 1px solid #ccc;">${data.pending}</td>
+      <td style="padding: 10px; border: 1px solid #ccc;">${data.skipped}</td>
+      <td style="padding: 10px; border: 1px solid #ccc;">${data.duration/1000}s</td>
+    </tr>
+  </tbody>
+</table>
+</html>
+`;
 
 fs.writeFileSync('table.html', table);
-
-function isEvenRow() {
-  let count = 0;
-  return () => {
-    count += 1;
-    return count % 2 === 0;
-  };
-}
-
-function formatKey(key) {
-  // Convert snake_case to Title Case
-  return key.replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
-}
-

@@ -36,6 +36,7 @@ jobs:
       - name: Generate Email HTML
         run: |
             node globals/json_html_converter.js
+            ls -l cypress/results/
             cat cypress/results/mochawesome.json
       
       - name: Send mail

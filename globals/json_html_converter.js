@@ -2,7 +2,7 @@ const fs = require('fs');
 
 // Read the JSON file
 const jsonData = fs.readFileSync('cypress/results/mochawesome.json');
-const data = JSON.parse(jsonData.toString());
+const data = JSON.parse(jsonData.toString()).stats;
 
 // Create the HTML table
 let table = `

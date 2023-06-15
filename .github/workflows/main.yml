@@ -35,9 +35,9 @@ jobs:
       
       - name: Generate Email HTML
         run: |
+            npx mochawesome-merge cypress/results/*.json > merged_report.json
             node globals/json_html_converter.js
-            ls -l cypress/results/
-            cat cypress/results/mochawesome.json
+            cat merged_report.json
       
       - name: Send mail
         uses: dawidd6/action-send-mail@v3

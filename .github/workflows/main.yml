@@ -38,6 +38,7 @@ jobs:
             npx mochawesome-merge cypress/results/*.json > merged_report.json
             node globals/json_html_converter.js
             cat merged_report.json
+            cat table.html
       
       - name: Send mail
         uses: dawidd6/action-send-mail@v3

@@ -36,7 +36,7 @@ jobs:
       - name: Generate Email HTML
         run: |
             npx mochawesome-merge cypress/results/*.json > merged_report.json
-            node globals/json_html_converter.js
+            node globals/json_html_converter.js "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             cat merged_report.json
             cat table.html
       

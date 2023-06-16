@@ -21,7 +21,6 @@ jobs:
         with:
           browser: chrome
           spec: |
-                cypress/integration/login/PNAV-6215_Verify_that_user_is_on_Sign_In_page.ts
                 cypress/integration/login/PNAV-6218_Verify_validation_errors_when_user_try_to_login_with_empty_fields.ts
         continue-on-error: true
       

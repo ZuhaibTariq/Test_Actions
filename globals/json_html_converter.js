@@ -8,6 +8,7 @@ const data = JSON.parse(jsonData.toString()).stats;
 let table = `
 <html>
 <h2>Cypress Results</h2>
+<h3><a href=${process.argv[2]}>Execution Link</a><h3>
 <table role="table" style="border-collapse: collapse; width: 100%;">
   <tbody>
     <tr>

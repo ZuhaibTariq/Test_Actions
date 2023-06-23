@@ -9,6 +9,9 @@ jobs:
     env:
       cypress_email: ${{ secrets.CYPRESS_EMAIL }}
       cypress_password: ${{ secrets.CYPRESS_PASSWORD }}
+    strategy:
+      matrix: 
+        browser: [chrome, firefox, edge]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -19,7 +22,7 @@ jobs:
       - name: e2e Tests
         uses: cypress-io/github-action@v5
         with:
-          browser: chrome
+          browser: ${{ matrix.browser }}
           spec: |
                 cypress/integration/login/PNAV-6218_Verify_validation_errors_when_user_try_to_login_with_empty_fields.ts
         continue-on-error: true

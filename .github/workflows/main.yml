@@ -22,7 +22,7 @@ jobs:
       - name: e2e Tests
         uses: cypress-io/github-action@v5
         with:
-          browser: ${{ matrix.browser }}
+          browser: c
           spec: |
                 cypress/integration/login/PNAV-6218_Verify_validation_errors_when_user_try_to_login_with_empty_fields.ts
         continue-on-error: true
@@ -64,7 +64,7 @@ jobs:
           # Optional (recommended) mail server password:
           password: ${{secrets.MAIL_PASSWORD}}
           # Required mail subject:
-          subject: Github Actions job result
+          subject: Github Actions (${{ matrix.browser }}) job result
           # Required recipients' addresses:
           to: zuhaib.tariq@proton.me,zzuhaibtariq1998@gmail.com
           # Required sender full name (address can be skipped):

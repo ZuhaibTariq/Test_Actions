@@ -22,7 +22,7 @@ jobs:
       - name: e2e Tests
         uses: cypress-io/github-action@v5
         with:
-          browser: c
+          browser: ${{ matrix.browser }}
           spec: |
                 cypress/integration/login/PNAV-6218_Verify_validation_errors_when_user_try_to_login_with_empty_fields.ts
         continue-on-error: true

@@ -9,9 +9,9 @@ jobs:
     env:
       cypress_email: ${{ secrets.CYPRESS_EMAIL }}
       cypress_password: ${{ secrets.CYPRESS_PASSWORD }}
-    strategy:
-      matrix: 
-        browser: [chrome, firefox, edge]
+#     strategy:
+#       matrix: 
+#         browser: [chrome, firefox, edge]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -33,7 +33,7 @@ jobs:
           path: |
                 cypress/screenshots
                 cypress/videos
-          if-no-files-found: ignor
+          if-no-files-found: ignore
       
       - name: Generate Email HTML
         run: |
